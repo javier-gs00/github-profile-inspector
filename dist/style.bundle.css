@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+}
+h1 {
+  color: #61dafb;
+}
+.app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #20232a;
+}
+
+/*# sourceMappingURL=style.bundle.css.map*/
