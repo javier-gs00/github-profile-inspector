@@ -22,6 +22,16 @@ module.exports = {
         filename: '[name].bundle.js'
     },
     devtool: 'cheap-module-eval-source-map',
+    devServer: {
+        contentBase: './dist',
+        port: 3000,
+        proxy: {
+            "/api": {
+                target: "http://localhost:3001/api",
+                pathRewrite: {"^/api": ""}
+            }
+        }
+    },
     module: {
         rules: [
             {
