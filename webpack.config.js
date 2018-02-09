@@ -19,11 +19,13 @@ module.exports = {
     },
     output: {
         path: paths.DIST,
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        publicPath: '/'
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: './dist',
+        // contentBase: './dist',
+        publicPath: '/',
         host: "0.0.0.0",
         port: 3000,
         historyApiFallback: true,
