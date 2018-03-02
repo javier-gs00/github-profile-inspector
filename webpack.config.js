@@ -22,7 +22,7 @@ module.exports = {
         filename: '[name].bundle.js',
         publicPath: '/'
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-source-map',
     devServer: {
         // contentBase: './dist',
         publicPath: '/',
