@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import LoadingSpinner from './loading-spinner'
 
 const mapStateToProps = ({ users }) => ({
+    isLoading: users.isLoading,
     avatarUrl: users.avatarUrl,
     username: users.username,
     realName: users.realName,
@@ -13,12 +15,16 @@ const mapStateToProps = ({ users }) => ({
 })
 
 const PersonalInfo = props => {
-    return (
+    console.log(typeof props.username)
+    return (props.isLoading
+        ? <LoadingSpinner />
+        : props.username !== undefined
+        ?
         <div className="info-container">
             <div className="personal-info-container">
                 <div className="personal-info-image-container">
                     <img
-                        src={props.avatarUrl || ''}
+                        src={props.avatarUrl}
                         alt=""></img>
                 </div>
                 <div className="personal-info-data-container">
@@ -42,6 +48,7 @@ const PersonalInfo = props => {
                 </div>
             </div>
         </div>
+        : null
     )
 }
 

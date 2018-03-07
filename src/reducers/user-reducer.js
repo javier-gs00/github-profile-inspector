@@ -2,7 +2,7 @@ import { START_SPINNER, STOP_SPINNER, ADD_USER, REQUEST_USER } from '../actions/
 
 const initialState = {
     isLoading: false,
-    username: '',
+    username: undefined,
     realName: '',
     avatarUrl: '',
     location: '',
