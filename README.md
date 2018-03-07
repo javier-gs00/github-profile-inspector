@@ -1,8 +1,7 @@
-# React-Less-Webpack-Template
+# Github-Profile-Inspector
 
-> A minimal webpack boilerplate for creating ReactJS apps using Less to style it.
+> A React.js app that uses the Github API to search and analize user data
 
-Content is served from localhost:3000 by default
+Search users by their username and see relevant data to their accounts.
 
-In development, AJAX request made like fetch('/api/some/route')
-will be made to localhost:3001/api/some/route
+(Still in development)

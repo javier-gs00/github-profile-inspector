@@ -1,0 +1,5 @@
+export const START_SPINNER = 'START_SPINNER'
+export const STOP_SPINNER = 'STOP_SPINNER'
+export const REQUEST_USER = 'REQUEST_USER'
+export const ADD_USER = 'ADD_USER'
+export const FETCH_USER = 'FETCH_USER'

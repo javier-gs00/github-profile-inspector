@@ -27,14 +27,10 @@ module.exports = {
         // contentBase: './dist',
         publicPath: '/',
         host: "0.0.0.0",
-        port: 3000,
-        historyApiFallback: true,
-        proxy: {
-            "/api": {
-                target: "http://localhost:3001/api",
-                pathRewrite: {"^/api": ""}
-            }
-        }
+        port: 3000
+    },
+    node: {
+        fs: 'empty'
     },
     module: {
         rules: [
