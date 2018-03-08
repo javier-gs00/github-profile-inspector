@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import LoadingSpinner from './loading-spinner'
 
 const mapStateToProps = ({ users }) => ({
@@ -11,7 +12,8 @@ const mapStateToProps = ({ users }) => ({
     htmlUrl: users.htmlUrl,
     publicRepositories: users.publicRepositories,
     followers: users.followers,
-    following: users.following
+    following: users.following,
+    bio: users.bio
 })
 
 const PersonalInfo = props => {
@@ -28,9 +30,14 @@ const PersonalInfo = props => {
                         alt=""></img>
                 </div>
                 <div className="personal-info-data-container">
-                    <span>{props.username|| 'username'}</span>
-                    <span>{props.realName || 'real name'}</span>
-                    <span>{props.location || 'location'}</span>
+                    <span>
+                        <FontAwesomeIcon icon="user-circle" />
+                        {props.username|| 'username'}
+                    </span>
+                    <span>
+                        <FontAwesomeIcon icon="map-marker-alt" />
+                        {props.location || 'location'}
+                    </span>
                     <div className="personal-info-stats">
                         <div className="stats-block">
                             <span>{props.publicRepositories || 0}</span>
@@ -46,6 +53,10 @@ const PersonalInfo = props => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="personal-bio">
+                <p>{props.realName || 'real name'}</p>
+                <p>{props.bio}</p>
             </div>
         </div>
         : null

@@ -1,8 +1,6 @@
 import * as types from './action-types'
 
-// const clientId = 'Iv1.c460c3a79a9b5929'
 const clientId = process.env.REACT_APP_GITHUB_CLIENT_ID
-// const clientSecret = '6bab4af6834b12aee844c5fb34d30dfa7c2de185'
 const clientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET
 
 export const requestUser = user => ({

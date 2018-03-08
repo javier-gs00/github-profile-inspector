@@ -9,7 +9,8 @@ const initialState = {
     htmlUrl: '',
     publicRepositories: '',
     followers: '',
-    following: ''
+    following: '',
+    bio: ''
 }
 
 const users = (state = initialState, action) => {
@@ -41,7 +42,8 @@ const users = (state = initialState, action) => {
                 htmlUrl: action.payload.html_url,
                 publicRepositories: action.payload.public_repos,
                 followers: action.payload.followers,
-                following: action.payload.following
+                following: action.payload.following,
+                bio: action.payload.bio
             }
         default:
             return state
