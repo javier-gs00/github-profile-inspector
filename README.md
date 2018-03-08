@@ -4,4 +4,5 @@
 
 Search users by their username and see relevant data from their accounts.
 
-(Still in development)
+The app can be seen at https://github-profile-inspector.firebaseapp.com/
+(IMPORTANT: App still in development)
