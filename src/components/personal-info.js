@@ -30,14 +30,14 @@ const PersonalInfo = props => {
                         alt=""></img>
                 </div>
                 <div className="personal-info-data-container">
-                    <span>
-                        <FontAwesomeIcon icon="user-circle" />
-                        {props.username|| 'username'}
-                    </span>
-                    <span>
-                        <FontAwesomeIcon icon="map-marker-alt" />
-                        {props.location || 'location'}
-                    </span>
+                    <div className="personal-info-data">
+                        <div><FontAwesomeIcon icon="user-circle" /></div>
+                        <span>{props.username|| 'username'}</span>
+                    </div>
+                    <div className="personal-info-data">
+                        <div><FontAwesomeIcon icon="map-marker-alt" /></div>
+                        <span>{props.location || 'N/A'}</span>
+                    </div>
                     <div className="personal-info-stats">
                         <div className="stats-block">
                             <span>{props.publicRepositories || 0}</span>

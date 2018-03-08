@@ -5,7 +5,7 @@ const initialState = {
     username: undefined,
     realName: '',
     avatarUrl: '',
-    location: '',
+    location: 'Somewhere in the world :S',
     htmlUrl: '',
     publicRepositories: '',
     followers: '',
