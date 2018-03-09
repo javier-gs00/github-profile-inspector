@@ -188,23 +188,36 @@ body {
     margin: 0 10px 0 5px;
     outline: none;
     font-size: @fontSmall;
+    color: #464646;
     width: 100%;
     height: 30px;
     border-width: 0px;
     border-style: solid;
-    border-radius: 2px;
-    padding: 0 0 0 10px;
-    background-color: #fafafa;
+    border-radius: 15px;
+    padding: 0 0 0 15px;
+    background-color: rgba(255, 255, 255, .6);
     box-shadow: @shadowResting;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #464646;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #464646;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #464646;
 }
 .search-button {
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35px;
+    width: 55px;
     height: 30px;
-    margin-left: -40px;
+    margin-left: -55px;
     border-style: none;
     border-radius: 2px;
     background-color: transparent;
@@ -224,6 +237,16 @@ body {
     .for-tablet-portrait-up({
         width: 800px;
     });
+}
+.user-not-found {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    color: #464646;
 }
 .personal-info-container {
     width: 100%;
@@ -260,10 +283,8 @@ body {
     }
 }
 .personal-info-data-container {
-    padding-left: 10px;
-    padding-right: 10px;
-    // match top border of profile image
-    padding-top: 20px;
+    // match top and bottom border of profile image
+    padding: 20px 10px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -302,7 +323,7 @@ body {
     width: 100%;
     display: flex;
     flex-flow: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .stats-block {
     display: flex;

@@ -20,7 +20,9 @@ const PersonalInfo = props => {
     console.log(typeof props.username)
     return (props.isLoading
         ? <LoadingSpinner />
-        : props.username !== undefined
+        : props.username === undefined
+        ? null
+        : props.username !== 'Not Found'
         ?
         <div className="info-container">
             <div className="personal-info-container">
@@ -59,7 +61,12 @@ const PersonalInfo = props => {
                 <p>{props.bio}</p>
             </div>
         </div>
-        : null
+        :
+        <div className="info-container">
+            <span className="user-not-found">
+                This user does not exists :S. Please try another one.
+            </span>
+        </div>
     )
 }
 

@@ -22,9 +22,15 @@ export const fetchUser = user => {
         })
         .then(
             response => response.json(),
-            error => console.log('An error ocurred: ', error)
+            error => console.log('An error ocurred while fetching the user: ', error)
         )
-        .then(json => dispatch(addUser(json)))
+        .then(payload => {
+            if (payload.message) return dispatch(addUser({
+                ...payload,
+                login: 'Not Found'
+            }))
+            return dispatch(addUser(payload))
+        })
     }
 }
 
