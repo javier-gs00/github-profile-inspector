@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import LoadingSpinner from './loading-spinner'
+import Menu from './menu'
 
 const mapStateToProps = ({ users }) => ({
     isLoading: users.isLoading,
@@ -60,11 +61,12 @@ const PersonalInfo = props => {
                 <p>{props.realName || 'real name'}</p>
                 <p>{props.bio}</p>
             </div>
+            <Menu />
         </div>
         :
         <div className="info-container">
             <span className="user-not-found">
-                This user does not exists :S. Please try another one.
+                This user does not exists :S<br />Please try another one
             </span>
         </div>
     )

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import SearchFormContainer from './components/search-form'
 import PersonalInfoContainer from './components/personal-info'
-import Footer from './components/footer'
 
 class App extends Component {
   render() {
@@ -11,7 +10,6 @@ class App extends Component {
         <div className="container">
           <SearchFormContainer />
           <PersonalInfoContainer />
-          <Footer />
         </div>
       </Provider>
     )
