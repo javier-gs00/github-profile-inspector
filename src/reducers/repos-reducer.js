@@ -28,7 +28,7 @@ const repos = (state = initialState, action) => {
                     languages_url: repo.languages_url,
                     stargazers_count: repo.stargazers_count,
                     updated_at: repo.updated_at,
-                    watchers_count: repo.watchers_count
+                    watchers_count: 0
                 }))
             }
         default:

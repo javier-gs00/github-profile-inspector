@@ -1,8 +1,5 @@
 import * as types from './action-types'
 
-const clientId = process.env.REACT_APP_GITHUB_CLIENT_ID
-const clientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET
-
 export const requestUser = () => ({
     type: types.REQUEST_USER
 })
@@ -14,15 +11,9 @@ export const addUser = payload => ({
 
 export const fetchUser = user => {
     return function (dispatch) {
+        let userRepositories = []
         dispatch(requestUser())
-        return fetch(`https://api.github.com/users/${user}?client_id=${clientId}&client_secret=${clientSecret}`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        })
-        .then(
-            response => response.json(),
-            error => console.log('An error ocurred while fetching the user: ', error)
-        )
+        return apiRequest(`users/${user}`)
         .then(payload => {
             if (payload.message) return dispatch(addUser({
                 ...payload,
@@ -30,16 +21,20 @@ export const fetchUser = user => {
             }))
             dispatch(addUser(payload))
             dispatch(requestRepos())
-            return fetch(`https://api.github.com/users/${user}/repos?client_id=${clientId}&client_secret=${clientSecret}`, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' }
-            })
+            return apiRequest(`users/${user}/repos`)
         })
-        .then(
-            response => response.json(),
-            error => console.log('An error ocurred while fetching this user repositories: ', error)
-        )
-        .then(payload => dispatch(addRepos(payload)))
+        .then(payload => {
+            // payload.map(repository => {
+            //     getSubscribersCount(repository.url).then(count => console.log(count))
+            // })
+            dispatch(addRepos(payload))
+            return apiRequest('rate_limit')
+        })
+        .then(payload => {
+            const oauth = process.env
+            console.log(oauth)
+            console.log(payload.resources.core)
+        })
     }
 }
 
@@ -51,3 +46,35 @@ export const addRepos = payload => ({
     type: types.ADD_REPOS,
     payload
 })
+
+function apiRequest (path) {
+    return new Promise((resolve, reject) => {
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': `token ${process.env.REACT_APP_GITHUB_OAUTH_TOKEN}`
+        })
+
+        const fetchOptions = {
+            headers: headers,
+            method: 'GET'
+        }
+
+        fetch(`https://api.github.com/${path}`, fetchOptions)
+        .then(
+            response => resolve(response.json()),
+            error => reject(error)
+        )
+    })
+}
+
+// Consumes rate limits too fast
+// function getSubscribersCount (endpoint) {
+//     return new Promise (resolve => {
+//         fetch(`${endpoint}/subscribers?client_id=${clientId}&client_secret=${clientSecret}`, {
+//             method: 'GET',
+//             headers: { 'Content-Type': 'application/json' }  
+//         })
+//         .then(response => response.json())
+//         .then(subscribers => resolve(subscribers.length))
+//     })
+// }

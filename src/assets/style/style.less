@@ -497,11 +497,32 @@ body {
                         span {
                             margin: 0 5px;
                         }
-                        span:nth-child(2) {
+                        span:nth-child(4) {
                             margin-right: auto;
                         }
-                        span:nth-child(3) {
+                        span:nth-child(5) {
                             margin-left: auto;
+                        }
+                        svg {
+                            width: 18px;
+                            // center path in svg ( 24px - 18px ) / 2
+                            padding-bottom: 3px;
+                            
+                            // stargazers svg
+                            &:first-child {
+                                margin-left: 5px;
+                                path {
+                                    fill: orange;
+                                }
+                            }
+                            // watchers svg
+                            &:nth-child(3) {
+                                margin-left: 10px;
+
+                                path {
+                                    fill: rgba(0, 0, 0 , .6);
+                                }
+                            }
                         }
                 }
             }
