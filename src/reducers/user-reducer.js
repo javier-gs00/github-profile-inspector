@@ -1,4 +1,4 @@
-import { START_SPINNER, STOP_SPINNER, ADD_USER, REQUEST_USER } from '../actions/action-types';
+import {  ADD_USER, REQUEST_USER } from '../actions/action-types';
 
 const initialState = {
     isLoading: false,
@@ -15,23 +15,13 @@ const initialState = {
 
 const users = (state = initialState, action) => {
     switch (action.type) {
-        case START_SPINNER:
-            return {
-                ...state,
-                isLoading: true
-            }
-        case STOP_SPINNER:
-            return {
-                ...state,
-                isLoading: false
-            }
         case REQUEST_USER:
             return {
                 ...state,
                 isLoading: true
             }
         case ADD_USER:
-            console.log(action)
+            // console.log(action)
             return {
                 ...state,
                 isLoading: false,

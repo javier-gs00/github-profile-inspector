@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import LoadingSpinner from './loading-spinner'
 import Menu from './menu'
+import RepositoriesList from './repos-list'
 
 const mapStateToProps = ({ users }) => ({
     isLoading: users.isLoading,
@@ -18,7 +19,6 @@ const mapStateToProps = ({ users }) => ({
 })
 
 const PersonalInfo = props => {
-    console.log(typeof props.username)
     return (props.isLoading
         ? <LoadingSpinner />
         : props.username === undefined
@@ -62,6 +62,7 @@ const PersonalInfo = props => {
                 <p>{props.bio}</p>
             </div>
             <Menu />
+            <RepositoriesList />
         </div>
         :
         <div className="info-container">

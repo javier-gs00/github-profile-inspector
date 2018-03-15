@@ -29,6 +29,9 @@ const Menu = () => {
 
     return (
         <div className="menu-container">
+            <div className="underline-menu-container">
+                <div className="underline-selection"></div>
+            </div>
             <ul>
                 <li>
                     <span onClick={setUnderline} id="menu-options-repos"
@@ -42,9 +45,6 @@ const Menu = () => {
                     </span>
                 </li>
             </ul>
-            <div className="underline-menu-container">
-                <div className="underline-selection"></div>
-            </div>
         </div>
     )
 }
