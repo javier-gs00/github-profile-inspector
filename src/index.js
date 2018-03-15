@@ -10,8 +10,6 @@ import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 import profileInspector from './reducers/reducer'
 
-require('dotenv').config()
-
 fontawesome.library.add(faMapMarkerAlt, faSearch, faSpinner, faUserCircle)
 
 const store = createStore(

@@ -31,9 +31,7 @@ export const fetchUser = user => {
             return apiRequest('rate_limit')
         })
         .then(payload => {
-            const oauth = process.env
-            console.log(oauth)
-            console.log(payload.resources.core)
+            console.log(` Request left in this hour: ${payload.resources.core.remaining}`)
         })
     }
 }
