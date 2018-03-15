@@ -17,7 +17,8 @@ const paths = {
 module.exports = env => {
     // console.log('NODE_ENV: ', env.NODE_ENV)
     // console.log('Production: ', env.production)
-    // console.log(process.env)
+    console.log(process.env)
+    console.log(env)
 
     return {
         entry: {
@@ -104,24 +105,25 @@ module.exports = env => {
             new HtmlWebpackPlugin({
                 template: path.join(paths.SRC, 'index.html'),
                 // uncomment next object for production
-                // minify: {
-                //     removeComments: true,
-                //     collapseWhitespace: true,
-                //     removeRedundantAttributes: true,
-                //     useShortDoctype: true,
-                //     removeEmptyAttributes: true,
-                //     removeStyleLinkTypeAttributes: true,
-                //     keepClosingSlash: true,
-                //     minifyJS: true,
-                //     minifyCSS: true,
-                //     minifyURLs: true,
-                //   }
+                minify: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeStyleLinkTypeAttributes: true,
+                    keepClosingSlash: true,
+                    minifyJS: true,
+                    minifyCSS: true,
+                    minifyURLs: true,
+                  }
             }),
             // CSS wil be extracted to this bundle file
             new ExtractTextPlugin('style.bundle.css'),
             new webpack.DefinePlugin({
                 // Define environment variables
                 'process.env': {
+                    'NODE_ENV': JSON.stringify(env.NODE_ENV),
                     'REACT_APP_GITHUB_OAUTH_TOKEN': JSON.stringify(process.env.REACT_APP_GITHUB_OAUTH_TOKEN)
                 }
             }),
