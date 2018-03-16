@@ -7,13 +7,12 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "webpack-dev-server  --env.NODE_ENV=development",
+    "dev": "webpack-dev-server --env.NODE_ENV=development",
     "build": "webpack --env.NODE_ENV=production"
   },
   "keywords": [
     "react",
-    "less",
-    "webpack"
+    "github"
   ],
   "author": "javier gutierrez",
   "license": "ISC",

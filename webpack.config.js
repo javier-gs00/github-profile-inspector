@@ -17,8 +17,8 @@ const paths = {
 module.exports = env => {
     // console.log('NODE_ENV: ', env.NODE_ENV)
     // console.log('Production: ', env.production)
-    console.log(process.env)
-    console.log(env)
+    // console.log(process.env)
+    // console.log(env.NODE_ENV === 'development')
 
     return {
         entry: {
@@ -29,7 +29,7 @@ module.exports = env => {
             filename: '[name].bundle.js',
             publicPath: '/'
         },
-        devtool: 'eval-source-map',
+        devtool: env.NODE_ENV === 'production' ? false : 'eval-source-map',
         devServer: {
             // contentBase: './dist',
             publicPath: '/',
@@ -122,9 +122,11 @@ module.exports = env => {
             new ExtractTextPlugin('style.bundle.css'),
             new webpack.DefinePlugin({
                 // Define environment variables
+                // 'process.env.NODE_ENV': "'production'",
+                // 'process.env.REACT_APP_GITHUB_OAUTH_TOKEN': JSON.stringify(process.env.REACT_APP_GITHUB_OAUTH_TOKEN),
                 'process.env': {
-                    'NODE_ENV': JSON.stringify(env.NODE_ENV),
-                    'REACT_APP_GITHUB_OAUTH_TOKEN': JSON.stringify(process.env.REACT_APP_GITHUB_OAUTH_TOKEN)
+                    NODE_ENV: JSON.stringify(env.NODE_ENV),
+                    REACT_APP_GITHUB_OAUTH_TOKEN: JSON.stringify(process.env.REACT_APP_GITHUB_OAUTH_TOKEN)
                 }
             }),
             new webpack.optimize.UglifyJsPlugin({
