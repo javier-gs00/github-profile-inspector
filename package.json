@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --env.NODE_ENV=development",
-    "build": "webpack --env.NODE_ENV=production"
+    "build": "webpack --env.NODE_ENV=production",
+    "deploy": "webpack --env.NODE_ENV=production && firebase deploy"
   },
   "keywords": [
     "react",

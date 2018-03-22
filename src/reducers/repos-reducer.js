@@ -13,7 +13,7 @@ const repos = (state = initialState, action) => {
                 isLoading: true
             }
         case ADD_REPOS:
-            console.log(action)
+            // console.log(action)
             return {
                 ...state,
                 isLoading: false,
@@ -28,7 +28,7 @@ const repos = (state = initialState, action) => {
                     languages_url: repo.languages_url,
                     stargazers_count: repo.stargazers_count,
                     updated_at: repo.updated_at,
-                    watchers_count: 0
+                    watchers_count: repo.subscribers_count
                 }))
             }
         default:

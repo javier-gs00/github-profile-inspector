@@ -122,8 +122,6 @@ module.exports = env => {
             new ExtractTextPlugin('style.bundle.css'),
             new webpack.DefinePlugin({
                 // Define environment variables
-                // 'process.env.NODE_ENV': "'production'",
-                // 'process.env.REACT_APP_GITHUB_OAUTH_TOKEN': JSON.stringify(process.env.REACT_APP_GITHUB_OAUTH_TOKEN),
                 'process.env': {
                     NODE_ENV: JSON.stringify(env.NODE_ENV),
                     REACT_APP_GITHUB_OAUTH_TOKEN: JSON.stringify(process.env.REACT_APP_GITHUB_OAUTH_TOKEN)

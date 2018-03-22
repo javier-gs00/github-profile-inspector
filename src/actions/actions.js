@@ -21,12 +21,12 @@ export const fetchUser = user => {
             }))
             dispatch(addUser(payload))
             dispatch(requestRepos())
-            return apiRequest(`users/${user}/repos`)
+            return getAllRepositories(user, payload.public_repos)
         })
         .then(payload => {
-            // payload.map(repository => {
-            //     getSubscribersCount(repository.url).then(count => console.log(count))
-            // })
+            return getSubscribersCount(user, payload)
+        })
+        .then(payload => {
             dispatch(addRepos(payload))
             return apiRequest('rate_limit')
         })
@@ -65,14 +65,39 @@ function apiRequest (path) {
     })
 }
 
-// Consumes rate limits too fast
-// function getSubscribersCount (endpoint) {
-//     return new Promise (resolve => {
-//         fetch(`${endpoint}/subscribers?client_id=${clientId}&client_secret=${clientSecret}`, {
-//             method: 'GET',
-//             headers: { 'Content-Type': 'application/json' }  
-//         })
-//         .then(response => response.json())
-//         .then(subscribers => resolve(subscribers.length))
-//     })
-// }
+// Get all the repos from a user
+function getAllRepositories(user, repositoriesCount) {
+    return new Promise (resolve => {
+        // Calculate the number of pages to fetch. Each fetch can get a maximum of 100 repos
+        const pagesToFetch = Math.floor(repositoriesCount / 100) + 1
+        let resolvedPromises = []
+        // Make the request and hold them in an array
+        for (let page = 1; page <= pagesToFetch; page++ ) {
+            resolvedPromises.push(apiRequest(`users/${user}/repos?per_page=100&page=${page}`))
+        }
+        // Create a new array containing all the others
+        Promise.all(resolvedPromises)
+        .then(pages => resolve([].concat.apply([], pages)))
+    })
+}
+
+// Get subscribers, formerly known as watchers, from a user repository
+function getSubscribersCount (user, payload) {
+    return new Promise (resolve => {
+        // create an array containing the executed api request to get the subscribers
+        let resolvedPromises = payload.map(repository => apiRequest(`repos/${user}/${repository.name}/subscribers?per_page=100`))
+        // Resolve the promises
+        Promise.all(resolvedPromises)
+        .then(data => {
+            let newPayload = []
+            // iterate over the data length to create a new repositories containing their
+            // subscribers count
+            // data and payload length is the same
+            for (let i = 0; i < data.length; i++) {
+                const subscribersCount = data[i].length === 100 ? '100+' : data[i].length
+                newPayload.push({ ...payload[i], subscribers_count: subscribersCount })
+            }
+            resolve(newPayload)
+        })
+    })
+}
