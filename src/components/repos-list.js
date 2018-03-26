@@ -28,7 +28,7 @@ const RepositoriesList = props => {
     )
 
     return (props.isLoading
-        ? <LoadingSpinner />
+        ? <LoadingSpinner repositoriesMessage={"Fetching Repos Data"}/>
         :
         <div className="repositories-container">
             <ul>

@@ -20,7 +20,7 @@ const mapStateToProps = ({ users }) => ({
 
 const PersonalInfo = props => {
     return (props.isLoading
-        ? <LoadingSpinner />
+        ? <LoadingSpinner repositoriesMessage={""}/>
         : props.username === undefined
         ? null
         : props.username !== 'Not Found'

@@ -44,12 +44,5 @@ module.exports = env => merge(common(env), {
             template: path.join(paths.SRC, 'index.html')
         }),
         new webpack.HotModuleReplacementPlugin()
-    ],
-    node: {
-        fs: 'empty'
-    },
-    // Enable importing JS files without specifying their extension
-    resolve: {
-        extensions: ['.js', '.jsx']
-    }
+    ]
 })

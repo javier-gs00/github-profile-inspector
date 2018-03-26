@@ -69,12 +69,5 @@ module.exports = env => merge(common(env), {
                 comments: false
             }
         })
-    ],
-    node: {
-        fs: 'empty'
-    },
-    // Enable importing JS files without specifying their extension
-    resolve: {
-        extensions: ['.js', '.jsx']
-    }
+    ]
 })
