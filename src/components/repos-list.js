@@ -5,7 +5,6 @@ import Stargazer from '../assets/img/stargazer'
 import Watchers from '../assets/img/watchers'
 
 const mapStateToProps = ({ repos }) => ({
-    isLoading: repos.isLoading,
     repos: repos.repos
 })
 
@@ -27,9 +26,7 @@ const RepositoriesList = props => {
         )
     )
 
-    return (props.isLoading
-        ? <LoadingSpinner repositoriesMessage={"Fetching Repos Data"}/>
-        :
+    return (
         <div className="repositories-container">
             <ul>
                 { repositories }

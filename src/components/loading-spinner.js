@@ -10,10 +10,9 @@ class LoadingSpinner extends React.Component {
     }
 
     componentDidMount() {
-        // this.timedText()
         this.state.loadingMessage = setTimeout(() => this.setState({
             loadingMessage: 'A lot of repos on this account. It may take a while.'
-        }), 3000)
+        }), 5000)
     }
 
     componentWillUnmount() {
@@ -27,9 +26,7 @@ class LoadingSpinner extends React.Component {
             <div className="loading">
                 <FontAwesomeIcon icon="spinner" size="3x" spin />
                 <span className="loading-message">{repositoriesMessage}</span>
-                <span
-                    id="long-loading-message"
-                    className="loading-message">{loadingMessage}</span>
+                <span className="loading-message">{loadingMessage}</span>
             </div>
         )
     }

@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import LoadingSpinner from './loading-spinner'
-import Menu from './menu'
-import RepositoriesList from './repos-list'
+import MenuContainer from './menu'
+// import RepositoriesList from './repos-list'
 
 const mapStateToProps = ({ users }) => ({
     isLoading: users.isLoading,
@@ -61,8 +61,8 @@ const PersonalInfo = props => {
                 <p>{props.realName || 'real name'}</p>
                 <p>{props.bio}</p>
             </div>
-            <Menu />
-            <RepositoriesList />
+            <MenuContainer />
+            {/* <RepositoriesList /> */}
         </div>
         :
         <div className="info-container">
