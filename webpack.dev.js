@@ -43,6 +43,7 @@ module.exports = env => merge(common(env), {
             inject: true,
             template: path.join(paths.SRC, 'index.html')
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ]
 })

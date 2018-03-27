@@ -10,19 +10,19 @@ const mapStateToProps = ({ repos }) => ({
 
 const RepositoriesList = props => {
     const repositories = props.repos.map(repo => (
-        <li key={repo.id}>
-            <div>
-                <span>{repo.name}</span>
-                <span>{repo.language}</span>
-            </div>
-            <div>
-                <Stargazer />
-                <span>{repo.stargazers_count}</span>
-                <Watchers />
-                <span>{repo.watchers_count}</span>
-                <span>updated: {parseDate(repo.updated_at)}</span>
-            </div>
-        </li>
+            <li key={repo.id}>
+                <div>
+                    <span>{repo.name}</span>
+                    <span>{repo.language}</span>
+                </div>
+                <div>
+                    <Stargazer />
+                    <span>{repo.stargazers_count}</span>
+                    <Watchers />
+                    <span>{repo.watchers_count}</span>
+                    <span>updated: {parseDate(repo.updated_at)}</span>
+                </div>
+            </li>
         )
     )
 
@@ -31,6 +31,9 @@ const RepositoriesList = props => {
             <ul>
                 { repositories }
             </ul>
+            <div id="chart-container">
+                Feature still in development!
+            </div>
         </div>
     )
 }

@@ -19,7 +19,7 @@ const SearchForm = props => {
         <div className="header-container">
             <div className="align-header-containers">
                 <div className="appname-container">
-                    <span>Github</span><span>Profile Inspector</span>
+                    <span>GitHub</span><span>Profile Inspector</span>
                 </div>
                 <div className="search-form-container">
                     <form 

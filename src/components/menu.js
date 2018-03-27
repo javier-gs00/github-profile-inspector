@@ -34,15 +34,25 @@ const Menu = props => {
         }
     }
 
-    function collapseLeft () {
-        // const repositories = document.getElementsByClassName('repositories-container')[0]
-        // const width = repositories.offsetWidth
-        // repositories.style.marginRight = width + "px"
-    }
+    function collapse (e) {
+        const selectedTab = e.target.id === "menu-options-repos" ? "left" : "right"
+        // Repositories containers and elements
+        const repositories = document.getElementsByClassName('repositories-container')[0]
+        const repositoriesUl = repositories.getElementsByTagName("ul")[0]
+        const repositoriesUlLi = repositoriesUl.getElementsByTagName("li")
+        // Chart containers and elements
+        const chartContainer = document.getElementById('chart-container')
 
-    function collapseRight () {
-        // const repositories = document.getElementsByClassName('repositories-container')[0]
-        // repositories.style.marginRight = "0"
+        const width = repositories.offsetWidth
+
+        for (let li of repositoriesUlLi) {
+            li.style.color = selectedTab === 'left' ? '#464646' : "transparent"
+        }
+
+        repositoriesUl.style.width = selectedTab === 'left' ? "100%" : "0%"
+        chartContainer.style.width = selectedTab === 'left' ? "0%" : "100%"
+        repositoriesUl.style.margin = selectedTab === 'left' ? "0 10px 10px" : "0"
+        chartContainer.style.margin = selectedTab === 'left' ? "0" : "0 10px 10px"
     }
 
     return (
@@ -55,13 +65,13 @@ const Menu = props => {
                     <div className="underline-selection"></div>
                 </div>
                 <ul>
-                    <li onClick={collapseRight}>
+                    <li onClick={collapse}>
                         <span onClick={setUnderline} id="menu-options-repos"
                             className="active-menu-option">
                             Repos
                         </span>
                     </li>
-                    <li onClick={collapseLeft}>
+                    <li onClick={collapse}>
                         <span onClick={setUnderline} id="menu-options-activity">
                             Activity
                         </span>
